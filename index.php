@@ -102,7 +102,7 @@ include('includes/connect.php');
                             <img class="card-img-top" src="./images/capsicum.png" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <p class="card-text">Some fast example text to build on the card title and make up the bulk of the card's content.</p>
                                 <a href="#" class="btn btn-info">Add to Cart</a>
                                 <a href="#" class="btn btn-secondary">View more</a>
                             </div>
