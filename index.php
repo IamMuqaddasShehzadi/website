@@ -71,11 +71,40 @@ include('includes/connect.php');
         </div>
 
         <!-- Fourth -->
-        <div class="row">
+        <div class="row px-3">
             <div class="col-md-10">
                 <!-- Products -->
                 <div class="row">
-                    <div class="col-md-4 mb-2">
+                    <!-- //fetching products -->
+                    <?php
+                    $select_query = "Select * from products";
+                    $result_query = mysqli_query($con, $select_query);
+                    // $row=mysqli_fetch_assoc($result_query);
+                    // echo $row['product_title'];
+                    while ($row = mysqli_fetch_assoc($result_query)) {
+                        $product_id = $row['product_id'];
+                        $product_title = $row['product_title'];
+                        $product_description = $row['product_description'];
+                        $product_image1 = $row['product_image1'];
+                        $product_price = $row['product_price'];
+                        $product_id = $row['product_id'];
+                        $category_id = $row['category_id'];
+                        $brand_id = $row['brand_id'];
+                        echo "<div class='col-md-4 mb-2'>
+<div class='card'>
+    <img class='card-img-top' src'./images/dairy.web' alt='Card image cap'>
+    <div class='card-body'>
+        <h5 class='card-title'>Card title</h5>
+        <p class='card-text'>Some quick example text to build on the card title 
+        and make up the bulk of the card's content.</p>
+        <a href='#' class='btn btn-info'>Add to Cart</a>
+        <a href='#' class='btn btn-secondary'>View more</a>
+    </div>
+</div>
+</div>";
+                    }
+                    ?>
+                    <!-- <div class="col-md-4 mb-2">
                         <div class="card">
                             <img class="card-img-top" src="./images/dairy.webp" alt="Card image cap">
                             <div class="card-body">
@@ -85,63 +114,10 @@ include('includes/connect.php');
                                 <a href="#" class="btn btn-secondary">View more</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 mb-2">
-                        <div class="card">
-                            <img class="card-img-top" src="./images/apple.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-info">Add to Cart</a>
-                                <a href="#" class="btn btn-secondary">View more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-2">
-                        <div class="card">
-                            <img class="card-img-top" src="./images/capsicum.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some fast example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-info">Add to Cart</a>
-                                <a href="#" class="btn btn-secondary">View more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-2">
-                        <div class="card">
-                            <img class="card-img-top" src="./images/capsicum.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-info">Add to Cart</a>
-                                <a href="#" class="btn btn-secondary">View more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-2">
-                        <div class="card">
-                            <img class="card-img-top" src="./images/capsicum.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-info">Add to Cart</a>
-                                <a href="#" class="btn btn-secondary">View more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-2">
-                        <div class="card">
-                            <img class="card-img-top" src="./images/capsicum.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-info">Add to Cart</a>
-                                <a href="#" class="btn btn-secondary">View more</a>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
+                    <!-- //row end -->
                 </div>
+                <!-- //col-end -->
             </div>
             <!-- side nav -->
             <div class="col-md-2 bg-secondary p-0">
@@ -151,20 +127,20 @@ include('includes/connect.php');
                             <h4>Delivery Brands</h4>
                         </a>
                     </li>
-<?php
-$select_brands="Select * from brands";
-$result_brands=mysqli_query($con,$select_brands);
-// $row_data=mysqli_fetch_assoc($result_brands);
-// echo $row_data['brand_title'];
-while($row_data=mysqli_fetch_assoc($result_brands)){
-    $brand_title=$row_data['brand_title'];
-    $brand_id=$row_data['brand_id'];
-    echo " <li class='nav-item '>
+                    <?php
+                    $select_brands = "Select * from brands";
+                    $result_brands = mysqli_query($con, $select_brands);
+                    // $row_data=mysqli_fetch_assoc($result_brands);
+                    // echo $row_data['brand_title'];
+                    while ($row_data = mysqli_fetch_assoc($result_brands)) {
+                        $brand_title = $row_data['brand_title'];
+                        $brand_id = $row_data['brand_id'];
+                        echo " <li class='nav-item '>
     <a href='index.php?brand=$brand_title'class='nav-link text-light'>$brand_title</a>
 </li>";
-}
-?>
-                    
+                    }
+                    ?>
+
                 </ul>
                 <!-- categories -->
                 <ul class="navbar-nav me-auto text-center">
@@ -174,27 +150,27 @@ while($row_data=mysqli_fetch_assoc($result_brands)){
                         </a>
                     </li>
                     <?php
-$select_categories="Select * from categories";
-$result_categories=mysqli_query($con,$select_categories);
-// $row_data=mysqli_fetch_assoc($result_brands);
-// echo $row_data['brand_title'];
-while($row_data=mysqli_fetch_assoc($result_categories)){
-    $category_title=$row_data['category_title'];
-    $category_id=$row_data['category_id'];
-    echo " <li class='nav-item '>
+                    $select_categories = "Select * from categories";
+                    $result_categories = mysqli_query($con, $select_categories);
+                    // $row_data=mysqli_fetch_assoc($result_brands);
+                    // echo $row_data['brand_title'];
+                    while ($row_data = mysqli_fetch_assoc($result_categories)) {
+                        $category_title = $row_data['category_title'];
+                        $category_id = $row_data['category_id'];
+                        echo " <li class='nav-item '>
     <a href='index.php?category=$category_id'class='nav-link text-light'>$category_title</a>
 </li>";
-}
-?>
-         </div>
+                    }
+                    ?>
+            </div>
         </div>
 
 
         <!-- last -->
         <div class="bg-info p-3 text-center">
-        <P>All rights reserved ©- Designed by Khanam-2022</P>
+            <P>All rights reserved ©- Designed by Khanam-2022</P>
         </div>
-</div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
